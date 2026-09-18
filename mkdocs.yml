@@ -1,5 +1,5 @@
 site_name: My Portfolio & Projects
-site_description: Personal portfolio and technical project showcases
+site_description: WVU MIS student focused on systems administration, network engineering, and infrastructure automation
 site_url: https://bpf00010.github.io/
 
 theme:
@@ -28,5 +28,31 @@ nav:
   - Home: index.md
   - Projects:
       - Overview: projects/index.md
-      - Project One: projects/project-one.md
+      - IP-Geo-Mapper: projects/ip-geo-mapper.md
+      - GNS3 Enterprise Network: projects/gns3-network.md
+  - Systems & Automation:
+      - CI/CD Lab Provisioning: engineering/lab-provisioning.md
+      - AWX & Proxmox Orchestration: engineering/awx-orchestration.md
+      - Linux Directory Optimization: engineering/sssd-tuning.md
+  - Experience: experience.md
+  - Certifications: certifications.md
   - About: about.md
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+validation:
+  links:
+    not_found: warn
+    unrecognized_links: warn
+    anchors: warn
