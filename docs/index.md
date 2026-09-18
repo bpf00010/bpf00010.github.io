@@ -1,37 +1,53 @@
-# Systems, networks, and infrastructure automation
+<div class="portfolio-hero" markdown>
 
-I'm a Management Information Systems student at West Virginia University focused on systems administration, network engineering, and infrastructure automation. My work connects enterprise platforms with practical automation—from repeatable OS deployments to packet-level network visibility.
+<span class="portfolio-eyebrow">SYSTEMS / NETWORKS / AUTOMATION</span>
 
-**CompTIA Network+ · N10-009** &nbsp; | &nbsp; **CCNA · In progress**
+# Less repetitive work. Better-running systems.
 
-[Explore my projects](projects/index.md){ .md-button .md-button--primary }
-[Systems & automation](engineering/lab-provisioning.md){ .md-button }
+I'm a Management Information Systems student at West Virginia University. I work with Windows and Linux labs, network infrastructure, and automation—usually with the goal of making an everyday task take less time.
 
-## Engineering outcomes
+<div class="portfolio-credentials" markdown>
 
-<div class="grid cards" markdown>
-
-- **3 hours → 25 minutes**
-
-    OS provisioning with Ubuntu autoinstall and Windows reference images.
-
-    [Explore the provisioning pipeline](engineering/lab-provisioning.md)
-
-- **60 seconds → 10 seconds**
-
-    Domain login latency reduced across 100 Ubuntu workstations.
-
-    [Read the directory optimization case study](engineering/sssd-tuning.md)
-
-- **Network traffic → geographic context**
-
-    Packet capture and geolocation in a cross-platform Blazor interface.
-
-    [Explore IP-Geo-Mapper](projects/ip-geo-mapper.md)
+**CompTIA Network+ · N10-009** &nbsp; / &nbsp; **CCNA · In progress**
 
 </div>
 
-## Technical skills
+[Explore my projects](projects/index.md){ .md-button .md-button--primary }
+[My infrastructure work](engineering/lab-provisioning.md){ .md-button }
+
+</div>
+
+## A few things I've worked on
+
+<div class="grid cards portfolio-outcomes" markdown>
+
+- **01 / Lab deployments**
+
+    ### About an hour → 3–5 minutes
+
+    Time until lab machines start their Windows deployment task sequence together, using SCCM/MECM device collections.
+
+    [Inside the deployment workflow →](engineering/lab-provisioning.md)
+
+- **02 / Linux directory services**
+
+    ### 60 seconds → 10 seconds
+
+    Faster domain logins across 100 Ubuntu workstations through configuration edits in `sssd.conf`.
+
+    [What I changed →](engineering/sssd-tuning.md)
+
+- **03 / IP-Geo-Mapper**
+
+    ### A closer look at network traffic
+
+    A C# and Blazor project that brings captured IP and port data into a geographic view.
+
+    [Explore the project →](projects/ip-geo-mapper.md)
+
+</div>
+
+## My toolkit
 
 <div class="grid cards" markdown>
 
@@ -49,4 +65,4 @@ I'm a Management Information Systems student at West Virginia University focused
 
 </div>
 
-[Experience at Statler College IT](experience.md) · [Certifications](certifications.md) · [About me](about.md)
+[Work experience](experience.md) · [Certifications](certifications.md) · [A little about me](about.md)

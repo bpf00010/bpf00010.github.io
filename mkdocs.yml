@@ -1,4 +1,4 @@
-site_name: My Portfolio & Projects
+site_name: Systems & Field Notes
 site_description: WVU MIS student focused on systems administration, network engineering, and infrastructure automation
 site_url: https://bpf00010.github.io/
 
@@ -6,14 +6,14 @@ theme:
   name: material
   palette:
     - scheme: default
-      primary: indigo
-      accent: indigo
+      primary: custom
+      accent: custom
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
     - scheme: slate
-      primary: indigo
-      accent: indigo
+      primary: custom
+      accent: custom
       toggle:
         icon: material/brightness-4
         name: Switch to light mode
@@ -31,8 +31,8 @@ nav:
       - IP-Geo-Mapper: projects/ip-geo-mapper.md
       - GNS3 Enterprise Network: projects/gns3-network.md
   - Systems & Automation:
-      - CI/CD Lab Provisioning: engineering/lab-provisioning.md
-      - AWX & Proxmox Orchestration: engineering/awx-orchestration.md
+      - Lab Images & Deployment: engineering/lab-provisioning.md
+      - GitLab & AWX Automation: engineering/awx-orchestration.md
       - Linux Directory Optimization: engineering/sssd-tuning.md
   - Experience: experience.md
   - Certifications: certifications.md
@@ -56,3 +56,6 @@ validation:
     not_found: warn
     unrecognized_links: warn
     anchors: warn
+
+extra_css:
+  - stylesheets/extra.css

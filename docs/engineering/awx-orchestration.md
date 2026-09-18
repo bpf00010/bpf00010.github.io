@@ -1,36 +1,41 @@
-# Ansible AWX & Proxmox orchestration
+# Managing Linux machines with GitLab and AWX
 
-**Environment:** Statler College IT  
-**Focus:** GitLab-connected automation, endpoint/server onboarding, and credential lifecycle management
+**Environment:** Higher-education IT · Linux configuration and compliance
 
-## Workflow
+I keep playbooks in GitLab. When I change one, the CI/CD pipeline syncs it into AWX and rebuilds its Execution Environment. I launch the job manually, which gives me control over when a change reaches the machines.
 
-The CI/CD pipeline links GitLab to Ansible AWX for automated endpoint and server onboarding. Proxmox provides the virtualization environment, while custom Execution Environments package the dependencies used by automation jobs.
+## From a playbook change to a managed machine
 
 ```mermaid
 flowchart LR
-    A[GitLab automation source] --> B[CI/CD integration]
-    B --> C[Ansible AWX jobs]
-    D[Custom Execution Environment] --> C
-    C --> E[Proxmox infrastructure]
-    C --> F[Endpoint and server onboarding]
-    C --> G[Linux LAPS password rotation]
+    G[Playbook change in GitLab] --> P[CI/CD pipeline]
+    P --> S[Sync playbooks into AWX]
+    P --> E[Rebuild Execution Environment]
+    S --> R[Updated automation ready in AWX]
+    E --> R
+    R --> H[Manual job launch]
+    H --> A[AWX job]
+    A -->|SSH key authentication| M[Managed Linux machines]
+    M --> C[Configuration and compliance policies]
+    C --> L[Linux LAPS password rotation]
 ```
 
-## Repeatable job execution
+## Automatic preparation, manual launch
 
-Custom Execution Environments give AWX jobs a defined runtime for their automation dependencies. This makes the execution environment part of the deployment design, alongside the playbooks and inventory.
+The pipeline takes care of preparing the updated automation. It does not launch a job. I choose when to run it from AWX, keeping changes ready without immediately applying them across the lab.
 
-## Onboarding and orchestration
+## Central management over SSH
 
-The GitLab-to-AWX connection supports a repeatable path from automation source to onboarding jobs. The exact trigger mechanism, inventory source, and Proxmox job sequence remain to be documented from the implementation.
+AWX connects to the managed machines using SSH key authentication. Ansible is agentless: the machines don't need a separate Ansible client installed to receive these changes. AWX initiates the connection and runs the work centrally.
 
-## Linux LAPS
+This is how I apply configuration and compliance policies across the machines, including Linux LAPS password rotation.
 
-Linux LAPS password rotation addresses the lifecycle of local administrative credentials. Rotation cadence, secret storage, recovery access, and failure handling are implementation details to describe using sanitized examples; no credentials belong in portfolio artifacts.
+## Keeping the runtime consistent
 
-## Supporting evidence
+Custom Execution Environments provide the dependencies AWX jobs need. The playbooks describe the work; the Execution Environment provides the runtime used to carry it out.
 
-Add a redacted successful job record, an Execution Environment dependency manifest, and a sanitized onboarding workflow when available. No separate performance metric was supplied for this system.
+## Proxmox has a separate role
 
-[See the OS provisioning case study](lab-provisioning.md)
+Proxmox VE hosts golden images, the VMs we capture images from, and licensing servers. The GitLab-to-AWX pipeline handles the playbook workflow and ongoing machine management.
+
+[Read about image preparation and lab deployments](lab-provisioning.md)

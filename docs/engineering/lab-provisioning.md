@@ -1,36 +1,36 @@
-# CI/CD lab provisioning
+# Starting a whole lab deployment in minutes
 
-**Environment:** Statler College IT  
-**Outcome:** OS deployment time reduced from **3 hours to 25 minutes**—155 minutes saved per deployment, approximately an 86% reduction.
+**Environment:** Higher-education IT · Windows and Ubuntu labs
 
-## The provisioning workflow
+When you're deploying an entire lab, even getting the job started can take too much time. My work brings image preparation and device collections together so the lab machines begin running their Windows deployment task sequence together in about **3–5 minutes**, down from roughly **an hour**.
 
-The work combined GitLab-hosted Ubuntu autoinstall ISOs, Proxmox, and Windows DISM reference images deployed through SCCM task sequences. These platforms support separate Linux and Windows provisioning paths within the broader lab deployment workflow.
+That timing runs through the machines starting the task sequence together. Completing the OS deployment takes additional time.
+
+## Where Proxmox fits
+
+Proxmox VE is where we host golden images or capture them from. It also hosts licensing servers. In this workflow, its role is to provide the virtual machines behind those images and services.
+
+## Windows: capture, collections, and task sequences
+
+Windows images are captured and deployed through SCCM/MECM. Device collections let us target large groups of lab machines together, then queue the appropriate task sequence for that collection.
+
+The practical difference is how much work it takes to kick off a lab deployment. Instead of spending around an hour getting it started, the machines begin running the task sequence together within about 3–5 minutes.
 
 ```mermaid
 flowchart TD
-    A[OS provisioning] --> B[Ubuntu path]
-    A --> C[Windows path]
-    B --> D[GitLab-hosted autoinstall ISO]
-    D --> E[Proxmox provisioning]
-    C --> F[DISM reference image]
-    F --> G[SCCM task sequence]
-    E --> H[Provisioned Linux system]
-    G --> I[Provisioned Windows system]
+    P[Proxmox VE] --> G[Golden image VMs]
+    P --> L[Licensing servers]
+    G --> C[Windows image capture through SCCM / MECM]
+    C --> T[Deployment task sequence]
+    D[Lab device collection] --> Q[Queue deployment for the collection]
+    T --> Q
+    Q --> W[Windows lab machines run the task sequence]
 ```
 
-## Ubuntu autoinstall and Proxmox
+## Ubuntu: repeatable installation media
 
-Ubuntu autoinstall moves installation choices into a repeatable configuration. GitLab-hosted ISOs supply the installation media for the Proxmox workflow, reducing repeated manual setup during lab provisioning.
+For Ubuntu, I work with GitLab-hosted autoinstall ISOs. These carry the installation choices into the deployment process, reducing the setup that needs to be repeated by hand.
 
-## Windows reference images
+## After installation
 
-DISM reference images provide the Windows baseline. SCCM task sequences coordinate deployment steps so that provisioning follows a repeatable process rather than a workstation-by-workstation installation.
-
-## Operational result
-
-The reported deployment duration fell from 180 to 25 minutes. This measures elapsed deployment time; it does not independently establish administrator touch time or annual labor savings. Measurement conditions and image-version details can be added alongside future deployment records.
-
-## From provisioning to onboarding
-
-Provisioning creates the initial system. The related [Ansible AWX and Proxmox orchestration workflow](awx-orchestration.md) addresses automated endpoint and server onboarding.
+Getting an OS installed is one part of managing a lab. On the Linux side, [AWX applies ongoing configuration and compliance policies over SSH](awx-orchestration.md), including Linux LAPS password rotation.

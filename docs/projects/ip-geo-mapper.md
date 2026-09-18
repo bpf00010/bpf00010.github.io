@@ -10,7 +10,7 @@
 
 ## Overview
 
-IP-Geo-Mapper turns mirrored network traffic into geographic and transport-port context. It brings packet ingestion and visualization together in a C# application, providing a way to explore the endpoints visible on a monitored network segment.
+I built IP-Geo-Mapper to get a clearer view of the traffic on a network segment. It takes captured packets, extracts IP addresses and ports, and brings that information into a geographic view in Blazor.
 
 ## Architecture
 
@@ -37,11 +37,11 @@ A Cisco Catalyst switch mirrors selected traffic to a capture-facing interface u
 
 SharpPcap provides the application-facing packet capture layer. The Windows capture path uses Npcap and the project's described WINAPI mode. The application extracts IP and transport-port information for downstream visualization.
 
-Npcap is the Windows component; a Linux capture host needs a compatible native backend. The exact Linux capture configuration and meaning of the project's WINAPI setting should be confirmed against the implementation before publishing setup instructions.
+Npcap is the Windows component; a Linux capture host needs a compatible native backend. Platform-specific setup instructions are still being documented.
 
 ### 3. Add geographic context
 
-IP information is enriched with geolocation data and paired with port information. The geolocation provider, lookup behavior, and handling of private or unresolved addresses are implementation details still to document. A mapped IP location represents network-location context, rather than a precise device location.
+IP information is enriched with geolocation data and paired with port information. A mapped IP location represents network-location context, rather than a precise device location.
 
 ### 4. Visualize in Blazor
 
@@ -49,8 +49,8 @@ The cross-platform Blazor UI presents the geographic and port data in one interf
 
 ## Engineering considerations
 
-A complete validation record should cover mirrored traffic visibility, capture permissions, packet loss under load, and behavior when geolocation is unavailable. SPAN configuration determines which traffic reaches the application; the map can only represent the traffic observed by that capture path.
+The capture is only as useful as the traffic reaching it. The switch's SPAN configuration determines what the application sees, and missing geolocation data can leave an address without a useful map location.
 
-## Project evidence
+## Source code
 
-The live URL, screenshots, capture-mode details, and performance measurements remain to be added. This case study describes the supplied architecture without asserting unverified throughput or coverage results.
+[Browse IP-Geo-Mapper on GitHub](https://github.com/bpf00010/IP-Geo-Mapper).
