@@ -1,11 +1,10 @@
-site_name: Brenden Furlong
+site_name: My Portfolio & Projects
 site_description: Personal portfolio and technical project showcases
-site_url: https://bpf00010.github.io/Brenden/
+site_url: https://bpf00010.github.io/
 
 theme:
   name: material
   palette:
-    # Automatic light/dark mode switch
     - scheme: default
       primary: indigo
       accent: indigo
