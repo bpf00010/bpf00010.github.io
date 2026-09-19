@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="{{ config.site_description | e }}"><meta name="theme-color" content="#161a19">
+<title>{% if page %}{{ page.title | e }} · {% endif %}{{ config.site_name | e }}</title>
+{% if page and page.canonical_url %}<link rel="canonical" href="{{ page.canonical_url | e }}">{% endif %}
+{% for path in config.extra_css %}<link rel="stylesheet" href="{{ path | url }}">{% endfor %}
+</head>
+<body class="{% if page and page.is_homepage %}home{% else %}inner{% endif %}">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+<a class="brand" href="{{ nav.homepage.url | url }}"><span class="brand-mark" aria-hidden="true">sf.</span><span>Systems &amp;<br>Field Notes</span></a>
+<nav class="desktop-nav" aria-label="Main navigation">
+{% for item in nav %}{% if item.children %}<details class="nav-group"><summary{% if item.active %} class="active"{% endif %}>{{ item.title }}</summary><div class="nav-menu">{% for child in item.children %}<a href="{{ child.url | url }}"{% if child.active %} aria-current="page"{% endif %}>{{ child.title }}</a>{% endfor %}</div></details>{% else %}<a href="{{ item.url | url }}"{% if item.active %} aria-current="page"{% endif %}>{{ item.title }}</a>{% endif %}{% endfor %}
+</nav>
+<details class="mobile-nav"><summary>Menu <span aria-hidden="true">+</span></summary><nav aria-label="Mobile navigation">{% for item in nav %}{% if item.children %}<span class="nav-label">{{ item.title }}</span>{% for child in item.children %}<a href="{{ child.url | url }}">{{ child.title }}</a>{% endfor %}{% else %}<a href="{{ item.url | url }}">{{ item.title }}</a>{% endif %}{% endfor %}</nav></details>
+</header>
+<main id="main" tabindex="-1">
+{% block content %}
+{% if page and not page.is_homepage %}<div class="page-heading"><span class="eyebrow">FIELD NOTES / {{ page.title | upper }}</span><a href="{{ nav.homepage.url | url }}">Back to home ↗</a></div>{% endif %}
+<div class="{% if page and page.is_homepage %}home-content{% else %}article-layout{% endif %}">
+<article>{{ page.content if page else '' }}</article>
+{% if page and not page.is_homepage and page.toc %}<aside class="contents"><span class="eyebrow">ON THIS PAGE</span><nav aria-label="On this page">{% for item in page.toc %}{% for child in item.children %}<a href="{{ child.url }}">{{ child.title }}</a>{% endfor %}{% endfor %}</nav></aside>{% endif %}
+</div>
+{% endblock %}
+</main>
+<footer><a class="footer-brand" href="{{ nav.homepage.url | url }}">Systems &amp; Field Notes<span aria-hidden="true">↗</span></a><div><span>Learning by building. Improving by doing.</span><a href="{{ 'about/' | url }}">About me</a><a href="https://github.com/bpf00010">GitHub ↗</a></div></footer>
+{% for script in config.extra_javascript %}{{ script | script_tag }}{% endfor %}
+</body>
+</html>

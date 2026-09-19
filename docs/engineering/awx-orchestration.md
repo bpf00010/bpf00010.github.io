@@ -4,21 +4,23 @@
 
 I keep playbooks in GitLab. When I change one, the CI/CD pipeline syncs it into AWX and rebuilds its Execution Environment. I launch the job manually, which gives me control over when a change reaches the machines.
 
+<figure class="project-figure" markdown>
+
+[![AWX overview with host inventory, job activity, and projects](../assets/images/awx.jpg){ loading=lazy }](../assets/images/awx.jpg)
+
+<figcaption>The AWX overview brings inventories, projects, and recent job activity together. Select the image to view it full size.</figcaption>
+</figure>
+
 ## From a playbook change to a managed machine
 
-```mermaid
-flowchart LR
-    G[Playbook change in GitLab] --> P[CI/CD pipeline]
-    P --> S[Sync playbooks into AWX]
-    P --> E[Rebuild Execution Environment]
-    S --> R[Updated automation ready in AWX]
-    E --> R
-    R --> H[Manual job launch]
-    H --> A[AWX job]
-    A -->|SSH key authentication| M[Managed Linux machines]
-    M --> C[Configuration and compliance policies]
-    C --> L[Linux LAPS password rotation]
-```
+<figure class="project-figure" markdown>
+
+[![Illustration of a GitLab CI/CD and AWX automation pipeline](../assets/images/gitlab-pipeline.jpg){ loading=lazy }](../assets/images/gitlab-pipeline.jpg)
+
+<figcaption><strong>Concept illustration:</strong> this graphic depicts an automatic job trigger and virtualenv setup. In my workflow, CI syncs playbooks and rebuilds the Execution Environment; I launch jobs manually, as described below. Select the image to view it full size.</figcaption>
+</figure>
+
+
 
 ## Automatic preparation, manual launch
 

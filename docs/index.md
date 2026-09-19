@@ -1,68 +1,106 @@
-<div class="portfolio-hero" markdown>
+<section class="hero" markdown>
 
-<span class="portfolio-eyebrow">SYSTEMS / NETWORKS / AUTOMATION</span>
+<div class="hero-topline"><span class="eyebrow">SYSTEMS / NETWORKS / AUTOMATION</span><span class="location">WVU · Management Information Systems</span></div>
 
-# Less repetitive work. Better-running systems.
+# Behind the scenes.<br><span class="accent">Ahead of the busywork.</span>
 
-I'm a Management Information Systems student at West Virginia University. I work with Windows and Linux labs, network infrastructure, and automation—usually with the goal of making an everyday task take less time.
+<div class="hero-bottom" markdown>
 
-<div class="portfolio-credentials" markdown>
+I work on the systems people depend on: Windows and Linux labs, network infrastructure, and the automation that makes everyday work a little easier.
 
-**CompTIA Network+ · N10-009** &nbsp; / &nbsp; **CCNA · In progress**
-
-</div>
-
-[Explore my projects](projects/index.md){ .md-button .md-button--primary }
-[My infrastructure work](engineering/lab-provisioning.md){ .md-button }
+[See the work ↓](#selected-work){ .button }
+[Meet the person behind it ↗](about.md){ .text-link }
 
 </div>
 
-## A few things I've worked on
+<div class="hero-image" markdown>
 
-<div class="grid cards portfolio-outcomes" markdown>
+[![AWX dashboard showing host inventory and job activity](assets/images/awx.jpg)](engineering/awx-orchestration.md)
 
-- **01 / Lab deployments**
+<div class="image-label"><span>01 / IN THE ENVIRONMENT</span><span>Linux management with AWX ↗</span></div>
+</div>
+</section>
 
-    ### About an hour → 3–5 minutes
+<section class="results" aria-label="Results from my infrastructure work">
+<div><span class="eyebrow">LESS WAITING</span><p class="stat">60s <span>→</span> 10s</p><p>Linux domain login time</p></div>
+<div><span class="eyebrow">FASTER STARTS</span><p class="stat">3–5 <span>min</span></p><p>Until lab deployment task sequences start</p></div>
+<div><span class="eyebrow">REAL ENVIRONMENTS</span><p class="stat">100 <span>machines</span></p><p>Ubuntu workstations in the login optimization work</p></div>
+</section>
 
-    Time until lab machines start their Windows deployment task sequence together, using SCCM/MECM device collections.
+<section class="selected-work" markdown>
 
-    [Inside the deployment workflow →](engineering/lab-provisioning.md)
+<div class="section-heading" markdown>
 
-- **02 / Linux directory services**
+<span class="eyebrow">A LOOK INSIDE</span>
 
-    ### 60 seconds → 10 seconds
+## Selected work { #selected-work }
 
-    Faster domain logins across 100 Ubuntu workstations through configuration edits in `sssd.conf`.
-
-    [What I changed →](engineering/sssd-tuning.md)
-
-- **03 / IP-Geo-Mapper**
-
-    ### A closer look at network traffic
-
-    A C# and Blazor project that brings captured IP and port data into a geographic view.
-
-    [Explore the project →](projects/ip-geo-mapper.md)
+Practical improvements, networking labs, and things I've built to learn.
 
 </div>
 
-## My toolkit
+<div class="work-grid" markdown>
 
-<div class="grid cards" markdown>
+<div class="work-card" markdown>
 
-- **Infrastructure**
+[![GNS3 network layout with switches, VLANs, and routers](assets/images/gns3.jpg){ loading=lazy }](projects/gns3-network.md)
 
-    Proxmox VE · Ubuntu Server · Rocky Linux · Windows Server · Active Directory/GPO · Ansible AWX · SCCM/MECM
+<span class="eyebrow">01 / NETWORKING</span>
 
-- **Networking**
+### A network, from the ground up
 
-    Cisco IOS · OSPF · VLANs (802.1Q) · ACLs · SPAN/Mirroring · GlobalProtect VPN
+VLANs, routing, and subnet isolation in a Cisco IOS lab. A place to put networking concepts to work.
 
-- **Languages & scripting**
-
-    PowerShell · Bash · Python · C#
+[Inside the GNS3 lab ↗](projects/gns3-network.md){ .text-link }
 
 </div>
 
-[Work experience](experience.md) · [Certifications](certifications.md) · [A little about me](about.md)
+<div class="work-card" markdown>
+
+[![IP-Geo-Mapper traffic dashboard](assets/images/geomapper.jpg){ loading=lazy }](projects/ip-geo-mapper.md)
+
+<span class="eyebrow">02 / A SIDE PROJECT</span>
+
+### A closer look at network traffic
+
+IP-Geo-Mapper is a C# and Blazor project for exploring captured traffic, IP locations, and ports.
+
+[About IP-Geo-Mapper ↗](projects/ip-geo-mapper.md){ .text-link }
+
+</div>
+
+</div>
+</section>
+
+<section class="field-notes" markdown>
+
+<div markdown>
+
+<span class="eyebrow">EVERYDAY ENGINEERING</span>
+
+## Small changes.<br>Noticeable differences.
+
+Some of my most useful work happens behind a login screen or before a lab opens. These are notes from that work.
+
+</div>
+
+<div class="note-list" markdown>
+
+[<span>01 / DEPLOYMENT</span><strong>Starting a whole lab in minutes</strong><span>Image preparation, device collections, and task sequences. ↗</span>](engineering/lab-provisioning.md)
+
+[<span>02 / AUTOMATION</span><strong>From GitLab to managed machines</strong><span>Playbooks, execution environments, and AWX. ↗</span>](engineering/awx-orchestration.md)
+
+[<span>03 / LINUX</span><strong>Taking the wait out of domain logins</strong><span>SSSD tuning across 100 Ubuntu workstations. ↗</span>](engineering/sssd-tuning.md)
+
+</div>
+</section>
+
+<section class="toolkit" markdown>
+
+<span class="eyebrow">TOOLS I WORK WITH</span>
+
+<p>Linux <span>/</span> Windows Server <span>/</span> Ansible AWX <span>/</span> Proxmox <span>/</span> Cisco IOS <span>/</span> PowerShell <span>/</span> Python <span>/</span> C#</p>
+
+[CompTIA Network+ · CCNA in progress](certifications.md){ .text-link }
+
+</section>

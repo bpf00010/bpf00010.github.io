@@ -5,20 +5,14 @@
 
 ## Topology overview
 
-The lab combines VLAN segmentation with routed connectivity and controlled external access. The schematic below is a conceptual reference for the write-up; it is not an exported GNS3 topology.
+The lab combines VLAN segmentation with routed connectivity and controlled external access. The annotated image below shows the layout and configuration concepts.
 
-```mermaid
-flowchart LR
-    A[VLAN 10 client subnet] --> S[Access switch]
-    B[VLAN 20 client subnet] --> S
-    S -->|802.1Q trunk| R[Inter-VLAN router]
-    R <-->|OSPF Area 0| E[Edge router]
-    E -->|NAT| U[Upstream network]
-    R -.-> P[Extended ACL subnet isolation]
-```
+<figure class="project-figure" markdown>
 
-!!! info "Lab export pending"
-    Replace or supplement this reference diagram with the actual GNS3 export when available.
+[![Annotated GNS3 layout showing VLANs, OSPF, NAT, and ACLs](../assets/images/gns3.jpg){ loading=lazy }](../assets/images/gns3.jpg)
+
+<figcaption>Network layout with routing and switching annotations. The configuration examples below remain illustrative. Select the image to view it full size.</figcaption>
+</figure>
 
 ## Routing and segmentation
 

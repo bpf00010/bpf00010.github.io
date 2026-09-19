@@ -12,22 +12,15 @@
 
 I built IP-Geo-Mapper to get a clearer view of the traffic on a network segment. It takes captured packets, extracts IP addresses and ports, and brings that information into a geographic view in Blazor.
 
-## Architecture
+<figure class="project-figure" markdown>
 
-```mermaid
-flowchart LR
-    A[Monitored network traffic] --> B[Cisco Catalyst switch]
-    B -->|SPAN / port mirror| C[Capture host network adapter]
-    C --> D{Capture host OS}
-    D -->|Windows| E[Npcap / WINAPI capture path]
-    D -->|Linux| F[Compatible native capture backend]
-    E --> G[SharpPcap ingestion]
-    F --> G
-    G --> H[Extract IP addresses and ports]
-    H --> I[Geolocation enrichment]
-    I --> J[Blazor C# interface]
-    J --> K[Geographic and port visualization]
-```
+[![IP-Geo-Mapper traffic dashboard with capture controls and recent traffic](../assets/images/geomapper.jpg){ loading=lazy }](../assets/images/geomapper.jpg)
+
+<figcaption>The traffic dashboard brings capture controls, packet totals, and recent connections into one view. Select the image to view it full size.</figcaption>
+</figure>
+
+## How it works
+
 
 ### 1. Mirror the traffic
 
@@ -45,7 +38,7 @@ IP information is enriched with geolocation data and paired with port informatio
 
 ### 4. Visualize in Blazor
 
-The cross-platform Blazor UI presents the geographic and port data in one interface. The diagram separates the OS-specific capture components from the C# processing and presentation layers.
+The cross-platform Blazor UI presents the geographic and port data in one interface. OS-specific capture components feed the C# processing and presentation layers.
 
 ## Engineering considerations
 

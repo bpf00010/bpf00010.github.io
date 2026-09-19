@@ -1,10 +1,10 @@
-# Featured projects
+# Projects & experiments
 
 ## IP-Geo-Mapper
 
 A packet-to-map pipeline combining Cisco Catalyst SPAN traffic, SharpPcap capture, and a Blazor interface for geolocation and port data.
 
-[Read the flagship case study](ip-geo-mapper.md){ .md-button .md-button--primary }
+[About IP-Geo-Mapper](ip-geo-mapper.md){ .md-button .md-button--primary }
 
 ## GNS3 enterprise network
 

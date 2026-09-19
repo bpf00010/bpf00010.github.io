@@ -3,26 +3,12 @@ site_description: WVU MIS student focused on systems administration, network eng
 site_url: https://bpf00010.github.io/
 
 theme:
-  name: material
-  palette:
-    - scheme: default
-      primary: custom
-      accent: custom
-      toggle:
-        icon: material/brightness-7
-        name: Switch to dark mode
-    - scheme: slate
-      primary: custom
-      accent: custom
-      toggle:
-        icon: material/brightness-4
-        name: Switch to light mode
-  features:
-    - navigation.tabs
-    - navigation.sections
-    - navigation.top
-    - search.suggest
-    - search.highlight
+  name: null
+  custom_dir: theme
+  static_templates:
+    - 404.html
+
+plugins: []
 
 nav:
   - Home: index.md
@@ -45,11 +31,7 @@ markdown_extensions:
   - pymdownx.details
   - pymdownx.highlight:
       anchor_linenums: true
-  - pymdownx.superfences:
-      custom_fences:
-        - name: mermaid
-          class: mermaid
-          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.superfences
 
 validation:
   links:

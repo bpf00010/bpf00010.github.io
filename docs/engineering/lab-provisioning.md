@@ -16,16 +16,6 @@ Windows images are captured and deployed through SCCM/MECM. Device collections l
 
 The practical difference is how much work it takes to kick off a lab deployment. Instead of spending around an hour getting it started, the machines begin running the task sequence together within about 3–5 minutes.
 
-```mermaid
-flowchart TD
-    P[Proxmox VE] --> G[Golden image VMs]
-    P --> L[Licensing servers]
-    G --> C[Windows image capture through SCCM / MECM]
-    C --> T[Deployment task sequence]
-    D[Lab device collection] --> Q[Queue deployment for the collection]
-    T --> Q
-    Q --> W[Windows lab machines run the task sequence]
-```
 
 ## Ubuntu: repeatable installation media
 
